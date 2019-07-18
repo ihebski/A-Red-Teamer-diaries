@@ -1732,8 +1732,10 @@ Dump hashes
 
 <br>
 # Contribute
+<br>
 As an open source we a strong focus on the community We welcome contributions as github pull requests.
+<br>
 <b>Kudos and thanks for the people who did the hard stuff<b/>
-#### Goal
-understand how the attacks can be performed
-try out various industry tools and become more profficient in using them
+# Goal
+* Understand how the attacks can be performed
+* Try out various industry tools and become more profficient in using them
