@@ -1730,12 +1730,12 @@ Dump hashes
 /usr/bin/impacket-secretsdump -system SYSTEM -security SECURITY -ntds ntds.dit local
 ```
 
-<br>
-# Contribute
-<br>
+### Contribute
+</br>
 As an open source we a strong focus on the community We welcome contributions as github pull requests.
 <br>
 <b>Kudos and thanks for the people who did the hard stuff<b/>
+</br>
 # Goal
 * Understand how the attacks can be performed
 * Try out various industry tools and become more profficient in using them
