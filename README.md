@@ -1,7 +1,6 @@
 # A Red-Teamer diaries
 <p align="center">
-  <img src="https://o.aolcdn.com/images/dims?quality=85&image_uri=http%3A%2F%2Fwww.blogcdn.com%2Fwww.engadget.com%2Fmedia%2F2013%2F05%2Fwatchdogshackingpeople619px.jpg&client=amp-blogside-v2&signature=5a38cb05cc4bcc10c424ff82fe29fedce3c30dfb
-" alt="cme"/>
+  <img src="https://www.welivesecurity.com/wp-content/uploads/2014/05/rooftop-1024x576.png"/>
 </p>
 
 
