@@ -1733,7 +1733,10 @@ Dump hashes
 ```
 /usr/bin/impacket-secretsdump -system SYSTEM -security SECURITY -ntds ntds.dit local
 ```
-
+# Interactive shell with nc
+```
+rlwrap nc -nlvp PORT
+```
 ### Contribute
 As an open source we a strong focus on the community We welcome contributions as github pull requests.
 Kudos and thanks for the people who did the hard stuff
