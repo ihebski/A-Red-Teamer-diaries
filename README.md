@@ -1754,6 +1754,7 @@ mssql_shell python script
 Usage : mssql_shell Change MSSQL_SERVE , MSSQL_USERNAME and MSSQL_PASSWORD
 ```
 **Sqsh**
+<br>
 Connect to the service 
 ```
 sqsh -S mssql -D MyDB -U DOMAIN\\testuser -P MyTestingClearPassword1
