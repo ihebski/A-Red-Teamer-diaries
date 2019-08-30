@@ -1882,4 +1882,4 @@ Kudos and thanks for the people who did the hard stuff
 * Understand how the attacks can be performed
 * Try out various industry tools and become more profficient in using them
 # Disclaimer
-For educational purposes only, use at your own responsibility.
+For educational purposes only, use it at your own responsibility.
