@@ -169,6 +169,27 @@ meterpreter > mimikatz_command -f sekurlsa::searchPasswords
 
 meterpreter > mimikatz_command -f sekurlsa::logonpasswords
 ```
+## Mimikatz on Linux
+In case no VM is available
+### step 1
+```bash
+winetricks msasn1
+```
+### step 2
+```bash
+╰─>$ wine /usr/share/windows-resources/mimikatz/Win32/mimikatz.exe
+0009:err:winediag:SECUR32_initNTLMSP ntlm_auth was not found or is outdated. Make sure that ntlm_auth >= 3.0.25 is in your path. Usually, you can find it in the winbind package of your distribution.
+
+  .#####.   mimikatz 2.2.0 (x86) #18362 May 13 2019 01:34:39
+ .## ^ ##.  "A La Vie, A L'Amour" - (oe.eo)
+ ## / \ ##  /*** Benjamin DELPY `gentilkiwi` ( benjamin@gentilkiwi.com )
+ ## \ / ##       > http://blog.gentilkiwi.com/mimikatz
+ '## v ##'       Vincent LE TOUX             ( vincent.letoux@gmail.com )
+  '#####'        > http://pingcastle.com / http://mysmartlogon.com   ***/
+
+mimikatz # 
+
+```
 
 # Privilege Escalation of Windows 
 
