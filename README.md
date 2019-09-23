@@ -403,7 +403,7 @@ net user /add [username] [password]
 ```
 ## Add as admin
 ```
-new localgroup administrators [username] /add
+net localgroup administrators [username] /add
 ```
 ## Add user to RDP group
 ```
