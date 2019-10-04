@@ -70,7 +70,7 @@ Download the tool from this link :
 > Go to : Preferences -> Display -> select Alive Hosts <br>
 > Go to : Preferences -> Pinging -> select Combained (UDP/TCP)
 
-# Lateral Movement and Exploiting
+# Lateral Movement and Exploitation
 
 ## Scanning for EternalBlue ms17-010
 ```bash
