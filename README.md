@@ -4,7 +4,7 @@
 </p>
 
 
-Publicly accessible notes about my pentesting/red teaming experiments tested on several controlled environments/infrastructures that involve playing with various tools and techniques used by penetration testers and redteamers during a security assessments.
+Publicly accessible notes about my pentesting/red teaming experiments tested on several controlled environments/infrastructures that involve playing with various tools and techniques used by penetration testers and redteamers during a security assessment.
 
 - [x] Project in progress
 ## Intrusion Kill Chain
