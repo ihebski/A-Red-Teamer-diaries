@@ -12,13 +12,13 @@ Publicly accessible notes about my pentesting/red teaming experiments tested on 
 We welcome contributions as github pull requests.<br>
 Kudos and thanks for the people who did the hard stuff
 </br>
-# Goals
+### Goals
 * Pentest/red team cheatsheet that collects snippets of codes and commands to help pentester during an engagement(saving time/fast search for a specific command).
 * Understand how the attacks can be performed
 * take notes for future reference
 
-# Disclaimer
-For educational purposes only, use it at your own responsibility. 
+> #### Disclaimer
+> For educational purposes only, use it at your own responsibility. 
 
 ## Intrusion Kill Chain
 <p align="center">
