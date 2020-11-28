@@ -72,7 +72,7 @@ Download the tool from this link :
 > Go to : Preferences -> Pinging -> select Combained (UDP/TCP)
 
 # Lateral Movement and Exploitation
-### scanning for vulnerable AD with Zerologon
+### Scanning for Zerologon
 SecuraBV zerologon scanner https://github.com/SecuraBV/CVE-2020-1472<br>
 We can use crackmapexec to extract the DC name
 ```bash
