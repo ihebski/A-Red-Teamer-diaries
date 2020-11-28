@@ -7,6 +7,19 @@
 Publicly accessible notes about my pentesting/red teaming experiments tested on several controlled environments/infrastructures that involve playing with various tools and techniques used by penetration testers and redteamers during a security assessment.
 
 - [x] Project in progress
+
+### Contribute
+We welcome contributions as github pull requests.<br>
+Kudos and thanks for the people who did the hard stuff
+</br>
+# Goals
+* Pentest/red team cheatsheet that collects snippets of codes and commands to help pentester during an engagement(saving time/fast search for a specific command).
+* Understand how the attacks can be performed
+* take notes for future reference
+
+# Disclaimer
+For educational purposes only, use it at your own responsibility. 
+
 ## Intrusion Kill Chain
 <p align="center">
   <img src="https://camo.githubusercontent.com/9547d8152e3490a6e5e3da0279faab64340885be/68747470733a2f2f646f63732e6d6963726f736f66742e636f6d2f656e2d75732f616476616e6365642d7468726561742d616e616c79746963732f6d656469612f61747461636b2d6b696c6c2d636861696e2d736d616c6c2e6a7067" alt="KillChain"/>
@@ -1914,12 +1927,3 @@ Dump hashes
 ```
 rlwrap nc -nlvp PORT
 ```
-### Contribute
-We welcome contributions as github pull requests.
-Kudos and thanks for the people who did the hard stuff
-</br>
-# Goal
-* Understand how the attacks can be performed
-* Try out various industry tools and become more profficient in using them
-# Disclaimer
-For educational purposes only, use it at your own responsibility.
