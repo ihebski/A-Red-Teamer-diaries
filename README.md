@@ -73,11 +73,23 @@ Download the tool from this link :
 
 # Lateral Movement and Exploitation
 ### scanning for vulnerable AD with Zerologon
+SecuraBV zerologon scanner https://github.com/SecuraBV/CVE-2020-1472<br>
 We can use crackmapexec to extract the DC name
 ```bash
 bash$ python3 zerologon_tester.py EXAMPLE-DC 1.2.3.4
 ```
 If the target is vulnerable the scanner showing the following output:
+<img src="https://github.com/ihebski/A-Red-Teamer-diaries/blob/master/zerologon/scanner.png" alt="zerologon scanner">
+### Exploiting zerologon
+- The exploit could reset the domain admin password we can use zer0dump exploit instead https://github.com/bb00/zer0dump
+- Dumping The admin password (change the username if only one user is targetted )
+
+<img src="https://github.com/ihebski/A-Red-Teamer-diaries/blob/master/zerologon/dump-Administrator-Password.png" alt="dump NTLM" >
+
+Getting an RCE through pass-the-hash
+<img src="https://github.com/ihebski/A-Red-Teamer-diaries/blob/master/zerologon/get_RCE_psexec.png" alt="RCE">
+
+> The provided screenshots are related to a personnel lab used for the POC test only, be careful when running the exploit on DC in PROD(during an engagement)
 
 ## Scanning for EternalBlue ms17-010
 ```bash
