@@ -72,6 +72,12 @@ Download the tool from this link :
 > Go to : Preferences -> Pinging -> select Combained (UDP/TCP)
 
 # Lateral Movement and Exploitation
+### scanning for vulnerable AD with Zerologon
+We can use crackmapexec to extract the DC name
+```bash
+bash$ python3 zerologon_tester.py EXAMPLE-DC 1.2.3.4
+```
+If the target is vulnerable the scanner showing the following output:
 
 ## Scanning for EternalBlue ms17-010
 ```bash
