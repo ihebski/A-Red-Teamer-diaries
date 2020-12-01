@@ -69,7 +69,7 @@ Intensive Scan (Note recommended):
 bash$ nmap -p 1-65535 -Pn -A -oA output target_IP 
 ```
 Scan with enumeration of the running services version :
-* -sC : Safe Scan
+* -sC : default scripts Equivalent to --script=default
 * -sV : Get the service version
 ```bash
 bash$ nmap -sC -sV -oA output target
