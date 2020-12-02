@@ -1988,7 +1988,7 @@ rlwrap nc -nlvp PORT
 ```
 # Tipis and tricks
 ### RCE POC
-We can use the folloiwng tricks as an RCE POC(in some engagements, the client asks a limited tests as POCs for RCE's).
+We can use the folloiwng tricks as an RCE POC(in some engagements, the client asks for a limited tests on RCE POCs).
 ## Ping
 Pentester machine
 ```bash
