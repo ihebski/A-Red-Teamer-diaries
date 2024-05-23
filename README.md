@@ -22,7 +22,7 @@ Kudos and thanks for the people who did the hard stuff
 
 ## Intrusion Kill Chain
 <p align="center">
-  <img src="https://camo.githubusercontent.com/9547d8152e3490a6e5e3da0279faab64340885be/68747470733a2f2f646f63732e6d6963726f736f66742e636f6d2f656e2d75732f616476616e6365642d7468726561742d616e616c79746963732f6d656469612f61747461636b2d6b696c6c2d636861696e2d736d616c6c2e6a7067" alt="KillChain"/>
+  <img src="https://ptgmedia.pearsoncmg.com/images/chap1_9780135752036/elementLinks/F01XX01.jpg" alt="KillChain"/>
 </p>
 
 
